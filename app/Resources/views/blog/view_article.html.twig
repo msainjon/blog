@@ -1,0 +1,16 @@
+{% extends 'view.html.twig' %}
+
+{% block body %}
+<h3>{{article.name}}</h3>
+<table>
+  <tr><td colspan="2">{{article.contenu}}</td></tr>
+  <tr><td>Auteur : {{article.auteur.username}}</td><td>le {{article.date|date('d/m/y')}}</td></tr>
+  <tr><td colspan="2">Categire : {{ article.categorie.name }}</td></tr>
+  <tr><td colspan="2">
+    tag : 
+    {% for tag in article.tag %}
+      {{ tag.name }}
+    {% endfor %}
+  </td></tr>
+</table>
+{% endblock %}

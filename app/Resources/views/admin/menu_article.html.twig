@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h3>Menu administration article</h3>
+<a href="{{ path('create_article') }}">Nouveau article</a>
+
+<table>
+  {% for article in list_article %}
+    <tr><td>{{ article.name }}</td><td><a href="{{ path('delete_article', {'id': article.id}) }}"> Supprimer</a></td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

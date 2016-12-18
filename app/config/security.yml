@@ -1,0 +1,29 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory: ~
+        bdd_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+    encoders:
+        AppBundle\Entity\User: plaintext
+
+    firewalls:
+        acl:
+            anonymous: ~
+            provider: bdd_provider
+            form_login:
+                login_path: admin_login
+                check_path: admin_check
+                default_target_path: menu_admin
+            logout:
+                path:   /logout
+                target: /
+
+    access_control:
+        - { path: /administration, roles: ROLE_ADMIN }

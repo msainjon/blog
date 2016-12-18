@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block entete %}
+  <h1>blog</h1>
+{% endblock %}  
+{% block body %}
+    <form method="POST" action="{{ path('admin_check') }}">
+      <label for="username">nom d'utilisateur</label>
+      <input type="text" id="username" name="_username" />
+
+      <label for="password">Mot de passe</label>
+      <input type="text" id="password" name="_password" />
+
+      <button type="submit">Valider</button>
+    </form>
+{% endblock %}

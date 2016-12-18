@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h3>Menu administration categorie</h3>
+<table>
+  {% for categorie in list_categorie %}
+    <tr><td>{{ categorie.name }}</td><td><a href="{{ path('delete_categorie', {'id': categorie.id}) }}"> Supprimer</a></td></tr>
+  {% endfor %}
+</table>
+<h5>Créer un nouveau tag</5>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
