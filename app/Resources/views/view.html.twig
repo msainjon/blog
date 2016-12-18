@@ -5,7 +5,11 @@
 {% block filtre%}
 {% endblock %}
 <table>
-    <tr><td><b>Nom de l'article</b></td><td><b>Tag </b></td></tr>
+    <tr>
+      <td><b>Nom de l'article</b></td>
+      <td><b>Tag </b></td>
+      <td><b>Nombre message</b></td>
+    </tr>
   {% for article in list_article %}
     <tr>
       <td><a href="{{ path('view_article', {'id': article.id}) }}">{{ article.name }}</a></td>
@@ -13,6 +17,9 @@
         {% for tag in  article.tag %}
           {{ tag.name }}
         {% endfor %}
+      </td>
+      <td>
+        {{ Get_Count_Comment(article.id) }}
       </td>
     </tr>
   {% endfor %}

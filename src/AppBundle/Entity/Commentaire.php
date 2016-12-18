@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="commentaire")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\commentaireRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentaireRepository")
  */
-class commentaire
+class Commentaire
 {
   /**
   * @ORM\Column(name="id", type="integer")

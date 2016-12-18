@@ -7,3 +7,9 @@ services:
   app.countarticle:
     class: AppBundle\Services\CountArticle
     arguments: ["@doctrine.orm.entity_manager"]
+
+  app.Commentaire:
+    class: AppBundle\Twig\Commentaire
+    arguments: ['@doctrine.orm.entity_manager']
+    tags:
+      - { name: twig.extension }

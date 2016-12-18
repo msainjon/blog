@@ -31,6 +31,26 @@ class ArticleRepository extends EntityRepository
     ->getResult();
   }
 
+  public function MyByCategorieByOrder($page, $categorie)
+  {
+    $offset=1*$page;
+    if($page==1)  {
+      $offset=0;
+    }
+    else {
+      $offset=10*($page-1);
+    }
+    $limit=10*$page;
+
+    return $this->createQueryBuilder('a')
+    ->where('a.categorie = :categorie')
+    ->orderBy("a.id", "DESC")
+    ->setParameter('categorie', $categorie)
+    ->setFirstResult( $offset )
+    ->setMaxResults( $limit )
+    ->getQuery()
+    ->getResult();
+  }
   public function MyAllFiltrage($page, $name)
   {
     $offset=1*$page;

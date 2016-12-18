@@ -1,0 +1,12 @@
+{% extends 'view.html.twig' %}
+
+{% block body %}
+{{ parent() }}
+{% for i in 1..totalpage  %}
+  {% if i == page %}
+    {{ i }}
+  {% else %}
+      <a href="{{ path('all_article', {'page': i}) }}">{{ i }}</a>
+  {% endif %}
+{% endfor %}
+{% endblock %}

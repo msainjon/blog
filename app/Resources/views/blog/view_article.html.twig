@@ -1,16 +1,36 @@
 {% extends 'view.html.twig' %}
 
 {% block body %}
+<hr>
 <h3>{{article.name}}</h3>
 <table>
   <tr><td colspan="2">{{article.contenu}}</td></tr>
   <tr><td>Auteur : {{article.auteur.username}}</td><td>le {{article.date|date('d/m/y')}}</td></tr>
-  <tr><td colspan="2">Categire : {{ article.categorie.name }}</td></tr>
+  <tr><td colspan="2">Categire : <a href="{{ path('categorie_article', {'categorie': article.categorie.id}) }}">{{ article.categorie.name }}</a></td></tr>
   <tr><td colspan="2">
-    tag : 
+    tag :
     {% for tag in article.tag %}
       {{ tag.name }}
     {% endfor %}
   </td></tr>
 </table>
+<hr>
+<h3>Commentaire : </h3>
+<hr>
+<table>
+  <tr>
+    <td><b>Auteur</b></td>
+    <td><b>Message</b></td>
+  </tr>
+  {% for commentaire in allcommentaire %}
+    <tr>
+      <td>{{commentaire.auteur}}</td>
+      <td>{{commentaire.contenu}}</td>
+    </tr>
+  {% endfor %}
+</table>
+<hr>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
 {% endblock %}
