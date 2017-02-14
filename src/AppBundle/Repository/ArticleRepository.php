@@ -51,7 +51,7 @@ class ArticleRepository extends EntityRepository
     ->getQuery()
     ->getResult();
   }
-  public function MyAllFiltrage($page, $name)
+  public function MyAllFiltrage($page, $name, $tag)
   {
     $offset=1*$page;
     if($page==1)  {
@@ -64,22 +64,50 @@ class ArticleRepository extends EntityRepository
 
     if($name!=null)
     {
-      $requete = $this->createQueryBuilder('a')
-      ->where('a.name = :name')
-      ->setParameter('name', $name)
-      ->orderBy("a.id", "DESC")
-      ->setFirstResult( $offset )
-      ->setMaxResults( $limit )
-      ->getQuery()
-      ->getResult();
+      if($tag==null){
+          $requete = $this->createQueryBuilder('a')
+          ->where('a.name like :name')
+          ->setParameter('name', '%'.$name.'%')
+          ->orderBy("a.id", "DESC")
+          ->setFirstResult( $offset )
+          ->setMaxResults( $limit )
+          ->getQuery()
+          ->getResult();
+      }
+      else {
+          $requete = $this->createQueryBuilder('a')
+          ->leftjoin('a.tag', 't')
+          ->where('t.id = :tag')
+          ->setParameter('tag', $tag->getId())
+          ->Andwhere('a.name like :name')
+          ->setParameter('name', '%'.$name.'%')
+          ->orderBy("a.id", "DESC")
+          ->setFirstResult( $offset )
+          ->setMaxResults( $limit )
+          ->getQuery()
+          ->getResult();
+      }
     }
     else {
+      if($tag==null){
         $requete = $this->createQueryBuilder('a')
         ->orderBy("a.id", "DESC")
         ->setFirstResult( $offset )
         ->setMaxResults( $limit )
         ->getQuery()
         ->getResult();
+      }
+      else {
+        $requete = $this->createQueryBuilder('a')
+        ->leftjoin('a.tag', 't')
+        ->where('t.id = :tag')
+        ->setParameter('tag', $tag->getId())
+        ->orderBy("a.id", "DESC")
+        ->setFirstResult( $offset )
+        ->setMaxResults( $limit )
+        ->getQuery()
+        ->getResult();
+      }
     }
 
     return $requete;

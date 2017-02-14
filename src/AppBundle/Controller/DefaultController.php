@@ -41,7 +41,7 @@ class DefaultController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
-          $list_article= $this->getDoctrine()->getRepository('AppBundle:Article')->MyAllFiltrage($page, $form['name']->getData());
+          $list_article= $this->getDoctrine()->getRepository('AppBundle:Article')->MyAllFiltrage($page, $form['name']->getData(),$form['tag']->getData());
         }
 
         return $this->render('blog/all.html.twig', [

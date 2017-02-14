@@ -7,7 +7,7 @@
     <tr><td>{{ categorie.name }}</td><td><a href="{{ path('delete_categorie', {'id': categorie.id}) }}"> Supprimer</a></td></tr>
   {% endfor %}
 </table>
-<h5>Créer un nouveau tag</5>
+<h5>Créer une nouvel categorie</5>
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}

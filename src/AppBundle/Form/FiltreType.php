@@ -16,14 +16,14 @@ class FiltreType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => false,
-                'label' => 'Nom du tag',
+                'label' => 'Nom de l\'article',
             ])
-            /*->add('tag', EntityType::class, array(
+            ->add('tag', EntityType::class, array(
                     'class' => 'AppBundle:Tag',
                     'multiple' => false,
                     'required' => false,
                     'choice_label' => 'name',
-            ))*/
+            ))
             ->add('Recherche', SubmitType::class)
         ;
     }

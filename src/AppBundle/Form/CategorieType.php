@@ -16,7 +16,7 @@ class CategorieType extends AbstractType
           // Obligatoire; longueur max : 200 chars;
             ->add('name', TextType::class, [
                 'required' => false,
-                'label' => 'Nom du tag'
+                'label' => 'Nom de categorie'
             ])
             ->add('submit', SubmitType::class)
         ;
