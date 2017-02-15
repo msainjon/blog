@@ -20,9 +20,15 @@ class CommentaireType extends AbstractType
             ])
             ->add('contenu', TextareaType::class, [
               'required' => false,
-              'label' => 'Message'
+              'label' => 'Message',
+              'attr' => array(
+                'class' => 'materialize-textarea'
+              )
             ])
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => array(
+                  'class' => 'btn waves-effect waves-light'
+                )
+            ]);
     }
 }

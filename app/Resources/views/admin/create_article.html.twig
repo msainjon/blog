@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div style="margin:100px;">
 <h3>Menu creation d'un article</h3>
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
 {% endblock %}

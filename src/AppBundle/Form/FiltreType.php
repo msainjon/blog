@@ -24,7 +24,10 @@ class FiltreType extends AbstractType
                     'required' => false,
                     'choice_label' => 'name',
             ))
-            ->add('Recherche', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => array(
+                  'class' => 'btn waves-effect waves-light'
+                )
+            ]);
     }
 }

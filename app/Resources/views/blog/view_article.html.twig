@@ -1,7 +1,7 @@
 {% extends 'view.html.twig' %}
 
 {% block body %}
-<hr>
+
 <h3>{{article.name}}</h3>
 <table>
   <tr><td colspan="2">{{article.contenu}}</td></tr>
@@ -14,22 +14,22 @@
     {% endfor %}
   </td></tr>
 </table>
-<hr>
+
+<div class="row">
+  <div class="card col s6 offset-s1">
 <h3>Commentaire : </h3>
-<hr>
-<table>
-  <tr>
-    <td><b>Auteur</b></td>
-    <td><b>Message</b></td>
-  </tr>
-  {% for commentaire in allcommentaire %}
-    <tr>
-      <td>{{commentaire.auteur}}</td>
-      <td>{{commentaire.contenu}}</td>
-    </tr>
-  {% endfor %}
-</table>
-<hr>
+
+      {% for commentaire in allcommentaire %}
+      <div class="row">
+        <div class="card col s6 offset-s1">
+          <u>Message de {{commentaire.auteur}} :<br></u>
+          <br>
+          {{commentaire.auteur}}
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}

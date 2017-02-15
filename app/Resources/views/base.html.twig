@@ -3,9 +3,6 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script -->
-
         {% block stylesheets %}
           <style>
               body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
@@ -33,17 +30,36 @@
                   .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
               }
           </style>
+          <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+          <script>
+            $(document).ready(function() {
+                $('select').material_select();
+                $('input#input_text, textarea#textarea1').characterCounter();
+            });
+
+          </script>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block entete %}
-          <h1>blog</h1>
-          {% if app.user %}
-            <a href="{{ path('admin_logout') }}">Se deconnecter</a>
-          {% else %}
-            <a href="{{ path('admin_login') }}">Se connecter</a>
-          {% endif %}
+          <nav>
+            <div class="nav-wrapper">
+              <a href="{{ path('homepage') }}" class="brand-logo">Blog</a>
+              <ul class="right hide-on-med-and-down">
+                {% if app.user %}
+                  <li><a href="{{ path('admin_article') }}">Article</a></li>
+                  <li><a href="{{ path('admin_tag') }}">Tags</a></li>
+                  <li><a href="{{ path('admin_categorie') }}">Categorie</a></li>
+                  <li><a href="{{ path('admin_logout') }}">Se deconnecter</a></li>
+                {% else %}
+                  <a href="{{ path('admin_login') }}">Se connecter</a>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

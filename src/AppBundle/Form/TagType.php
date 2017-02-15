@@ -18,7 +18,10 @@ class TagType extends AbstractType
                 'required' => false,
                 'label' => 'Nom du tag'
             ])
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => array(
+                  'class' => 'btn waves-effect waves-light'
+                )
+            ]);
     }
 }

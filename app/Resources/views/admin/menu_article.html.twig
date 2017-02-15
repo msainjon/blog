@@ -4,9 +4,15 @@
 <h3>Menu administration article</h3>
 <a href="{{ path('create_article') }}">Nouveau article</a>
 
-<table>
-  {% for article in list_article %}
-    <tr><td>{{ article.name }}</td><td><a href="{{ path('delete_article', {'id': article.id}) }}"> Supprimer</a></td></tr>
-  {% endfor %}
-</table>
+<div class="row">
+  <div class="col s10 offset-s1">
+    <table class="striped">
+      <tbody>
+      {% for article in list_article %}
+        <tr><td>{{ article.name }}</td><td><a href="{{ path('delete_article', {'id': article.id}) }}" class="btn waves-effect waves-light red"> Supprimer</a></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}

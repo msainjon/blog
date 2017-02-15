@@ -22,6 +22,9 @@ class ArticleType extends AbstractType
             ])
             ->add('contenu', TextareaType::class, [
                 'required' => false,
+                'attr' => array(
+                  'class' => 'materialize-textarea'
+                )
             ])
             ->add('date', DateType::class, [
                 'required' => false,
@@ -38,7 +41,10 @@ class ArticleType extends AbstractType
                     'required' => false,
                     'choice_label' => 'name',
             ))
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => array(
+                  'class' => 'btn waves-effect waves-light'
+                )
+            ]);
     }
 }

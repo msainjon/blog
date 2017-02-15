@@ -4,24 +4,30 @@
 <h3>Article : </h3>
 {% block filtre%}
 {% endblock %}
-<table>
-    <tr>
-      <td><b>Nom de l'article</b></td>
-      <td><b>Tag </b></td>
-      <td><b>Nombre message</b></td>
-    </tr>
-  {% for article in list_article %}
-    <tr>
-      <td><a href="{{ path('view_article', {'id': article.id}) }}">{{ article.name }}</a></td>
-      <td>
-        {% for tag in  article.tag %}
-          {{ tag.name }}
-        {% endfor %}
-      </td>
-      <td>
-        {{ Get_Count_Comment(article.id) }}
-      </td>
-    </tr>
-  {% endfor %}
-</table>
+<div class="row">
+  <div class="col s10 offset-s1">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th><b>Nom de l'article</b></th>
+          <th><b>Tag </b></td>
+          <th><b>Nombre message</b></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for article in list_article %}
+        <tr>
+          <td><a href="{{ path('view_article', {'id': article.id}) }}">{{ article.name }}</a></td>
+          <td>
+            {% for tag in  article.tag %}
+              {{ tag.name }}
+            {% endfor %}
+          </td>
+          <td>
+            {{ Get_Count_Comment(article.id) }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    </table>
 {% endblock %}

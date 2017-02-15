@@ -1,7 +1,11 @@
 {% extends 'view.html.twig' %}
 
 {% block body %}
-{{ parent() }}
+<div class="row">
+  <div class="col s10 offset-s1">
+    {{ parent() }}
 
-<a href="{{ path('all_article') }}">Plus >></a>
+    <a href="{{ path('all_article') }}" class="waves-effect waves-light btn">Plus</a>
+  </div>
+</div>
 {% endblock %}
